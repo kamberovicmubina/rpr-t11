@@ -86,18 +86,27 @@
               </rowConstraints>
                <children>
                   <Label text="%Id" GridPane.rowIndex="1" />
-                  <Label text="Glavni Grad" GridPane.rowIndex="2" />
+                  <Label text="Glavni Grad" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin></Label>
                   <Label text="%Naziv" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin></Label>
-                  <TextField fx:id="glavniGradTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="glavniGradTxt" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin></TextField>
                   <Button mnemonicParsing="false" onAction="#dodajDrzavu" text="%Dodaj" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
-                        <Insets left="5.0" />
+                        <Insets bottom="10.0" left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#obrisiDrzavu" text="%Obrisi" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#obrisiDrzavu" text="%Obrisi" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin></Button>
                   <TextField fx:id="nazivDrzavaTxt" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Label text="%Drzava" GridPane.columnSpan="4" />
                   <Spinner fx:id="idDrzavaSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -125,7 +134,7 @@
                   </TextField>
                   <TextArea fx:id="tekst" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
                </children>
@@ -135,14 +144,9 @@
             </VBox>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="%Fajl">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="%Pogled">
@@ -152,6 +156,11 @@
                 </Menu>
               </menus>
             </MenuBar>
+            <Button mnemonicParsing="false" onAction="#stampajGradove" text="Stampaj Gradove" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
    </children>

@@ -8,10 +8,13 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.JRException;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static ba.unsa.etf.rpr.GeografijaDAO.*;
 
 
 public class IzgledController implements Initializable {
@@ -103,6 +106,15 @@ public class IzgledController implements Initializable {
         });
     }
 
+    public void stampajGradove() {
+        try {
+            new GradoviReport().showReport(GeografijaDAO.getInstance().getConnection());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+
     public boolean validanNaziv (String n) {
         for (char c : n.toCharArray())
         {
@@ -191,7 +203,7 @@ public class IzgledController implements Initializable {
     }
 
     public void sviGradovi () {
-        ArrayList<Grad> gradovi = GeografijaDAO.getInstance().gradovi();
+        ArrayList<Grad> gradovi = getInstance().gradovi();
         String rezultat = "";
         if (gradovi != null) {
             for (Grad g : gradovi) {

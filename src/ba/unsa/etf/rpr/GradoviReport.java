@@ -10,10 +10,8 @@ import java.util.HashMap;
 
 public class GradoviReport extends JFrame {
     public void showReport(Connection conn) throws JRException {
-        String reportSrcFile = getClass().getResource("/reports/gradovi.jrxml").getFile();
-        String reportsDir = getClass().getResource("/reports/").getFile();
-
-
+        String reportSrcFile = getClass().getResource("/gradovi.jrxml").getFile();
+        String reportsDir = getClass().getResource("/").getFile();
 
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
         // Fields for resources path
