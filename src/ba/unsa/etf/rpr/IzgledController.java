@@ -2,16 +2,19 @@ package ba.unsa.etf.rpr;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static ba.unsa.etf.rpr.GeografijaDAO.*;
@@ -28,6 +31,12 @@ public class IzgledController implements Initializable {
     @FXML private TextField nazivDrzavaTxt;
     @FXML private TextField glavniGradUpis;
     @FXML private TextArea tekst;
+    @FXML private MenuItem bosanski;
+    @FXML private MenuItem engleski;
+    @FXML private MenuItem njemacki;
+    @FXML private MenuItem francuski;
+    private ResourceBundle bundle;
+    @FXML GridPane gp;
     private boolean gNaziv = false, gDrzava = false, gId, dNaziv = false, dGlGrad = false;
 
     public IzgledController (GeografijaDAO ge) {
@@ -104,6 +113,35 @@ public class IzgledController implements Initializable {
                 }
             }
         });
+    }
+
+    public void reloadScene(){
+        try{
+            bundle = ResourceBundle.getBundle("Translation");
+            Scene scene = gp.getScene();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("izgled.fxml"), bundle);
+            loader.setController(this);
+            scene.setRoot(loader.load());
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void setBosanski (ActionEvent actionEvent) {
+        Locale.setDefault(new Locale("bs", "BA"));
+        reloadScene();
+    }
+    public void setEngleski (ActionEvent actionEvent) {
+        Locale.setDefault(new Locale("en", "EN"));
+        reloadScene();
+    }
+    public void setNjemacki (ActionEvent actionEvent) {
+        Locale.setDefault(new Locale("de", "DE"));
+        reloadScene();
+    }
+    public void setFrancuski (ActionEvent actionEvent) {
+        Locale.setDefault(new Locale("fr", "FR"));
+        reloadScene();
     }
 
     public void stampajGradove() {

@@ -8,9 +8,9 @@
     <custom-resource-bundle>
       <file value="file://$PROJECT_DIR$/src/Translation.properties" />
       <file value="file://$PROJECT_DIR$/src/Translation_bs.properties" />
+      <file value="file://$PROJECT_DIR$/src/Translation_de.properties" />
       <file value="file://$PROJECT_DIR$/src/Translation_en_US.properties" />
       <file value="file://$PROJECT_DIR$/src/Translation_fr.properties" />
-      <file value="file://$PROJECT_DIR$/src/Translation_ger.properties" />
       <base-name>Translation</base-name>
     </custom-resource-bundle>
   </component>

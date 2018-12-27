@@ -22,7 +22,7 @@
         <URL value="@style.css" />
     </stylesheets>
     <children>
-      <GridPane layoutX="-1.0" layoutY="3.0" prefHeight="394.0" prefWidth="600.0">
+      <GridPane fx:id="gp" layoutX="-1.0" layoutY="3.0" prefHeight="394.0" prefWidth="600.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -151,7 +151,14 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="%Pogled">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="%Jezik" />
+                        <Menu mnemonicParsing="false" text="%Jezik">
+                          <items>
+                            <MenuItem fx:id="bosanski" mnemonicParsing="false" onAction="#setBosanski" text="%Bosanski" />
+                              <MenuItem fx:id="engleski" mnemonicParsing="false" onAction="#setEngleski" text="%Engleski" />
+                              <MenuItem fx:id="njemacki" mnemonicParsing="false" onAction="#setNjemacki" text="%Njemacki" />
+                              <MenuItem fx:id="francuski" mnemonicParsing="false" onAction="#setFrancuski" text="%Francuski" />
+                          </items>
+                        </Menu>
                   </items>
                 </Menu>
               </menus>
