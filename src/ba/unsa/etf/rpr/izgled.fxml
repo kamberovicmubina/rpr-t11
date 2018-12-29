@@ -31,6 +31,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <GridPane GridPane.rowIndex="1">
@@ -146,7 +147,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="%Fajl">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem fx:id="spasi" mnemonicParsing="false" text="SaveAs" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="%Pogled">
@@ -164,6 +165,12 @@
               </menus>
             </MenuBar>
             <Button mnemonicParsing="false" onAction="#stampajGradove" text="Stampaj Gradove" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="drzavaZaIzvjestaj" GridPane.rowIndex="3" />
+            <Button fx:id="izvjestaj" mnemonicParsing="false" onAction="#izvjestajZaDrzavu" text="Stampaj Izvjestaj" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>

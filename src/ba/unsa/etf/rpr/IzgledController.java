@@ -9,8 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class IzgledController implements Initializable {
     @FXML private TextField glavniGradTxt;
     @FXML private TextField nazivDrzavaTxt;
     @FXML private TextField glavniGradUpis;
+    @FXML private TextField drzavaZaIzvjestaj;
     @FXML private TextArea tekst;
     @FXML private MenuItem bosanski;
     @FXML private MenuItem engleski;
@@ -127,6 +131,34 @@ public class IzgledController implements Initializable {
         }
     }
 
+    public void spasi (ActionEvent actionEvent){
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter prvi = new FileChooser.ExtensionFilter("PDF", "*.pdf");
+        FileChooser.ExtensionFilter drugi = new FileChooser.ExtensionFilter("DOCX", "*.docx");
+        FileChooser.ExtensionFilter treci = new FileChooser.ExtensionFilter("XSLX", "*.xslx");
+        fileChooser.getExtensionFilters().addAll(prvi,drugi,treci);
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        File fajl = fileChooser.showSaveDialog(new Stage());
+        if (fajl != null)
+            doSave(fajl);
+    }
+
+    public void doSave (File datoteka) {
+        try {
+            new GradoviReport().saveAs(datoteka.getAbsolutePath(), ge.getConnection());
+        } catch (JRException | IOException greska) {
+            System.out.println(greska.getMessage());
+        }
+    }
+
+    public void izvjestajZaDrzavu(ActionEvent actionEvent) {
+        try{
+            new GradoviReport().showReport2(ge.getConnection(), ge.nadjiDrzavu(drzavaZaIzvjestaj.getText()));
+        }catch(JRException e){
+            e.printStackTrace();
+        }
+    }
+
     public void setBosanski (ActionEvent actionEvent) {
         Locale.setDefault(new Locale("bs", "BA"));
         reloadScene();
@@ -146,7 +178,7 @@ public class IzgledController implements Initializable {
 
     public void stampajGradove() {
         try {
-            new GradoviReport().showReport(GeografijaDAO.getInstance().getConnection());
+            new GradoviReport().showReport(GeografijaDAO.getInstance().getConnection(), null);
         } catch (JRException e1) {
             e1.printStackTrace();
         }
